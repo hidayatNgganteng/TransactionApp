@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const transactionList = () => {
+const TransactionList = () => {
   return (
     <View>
       <Text>transactionList</Text>
@@ -9,6 +9,6 @@ const transactionList = () => {
   );
 };
 
-export default transactionList;
+export default TransactionList;
 
 const styles = StyleSheet.create({});

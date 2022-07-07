@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const transactionDetails = () => {
+const TransactionDetails = () => {
   return (
     <View>
       <Text>transactionDetails</Text>
@@ -9,6 +9,6 @@ const transactionDetails = () => {
   );
 };
 
-export default transactionDetails;
+export default TransactionDetails;
 
 const styles = StyleSheet.create({});
