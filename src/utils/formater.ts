@@ -24,3 +24,8 @@ export const DATE_IDN_FORMAT = (dateTime: string) => {
 
   return `${date} ${IDN_MONTH[month]} ${year}`;
 };
+
+export const BANK_NAME_MASK = (bankName: string) =>
+  bankName.length <= 4
+    ? bankName.toUpperCase()
+    : `${bankName.charAt(0).toUpperCase()}${bankName.slice(1)}`;
