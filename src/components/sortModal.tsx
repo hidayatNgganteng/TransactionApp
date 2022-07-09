@@ -6,8 +6,8 @@ import {
   View,
 } from 'react-native';
 import React, {memo} from 'react';
-import {COLOR} from '../themes/typography';
 import SortModalCard from './sortModalCard';
+import {Colors} from '../styles';
 
 interface ISortModal {
   data: any[];
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   contentArea: {
     width: WIDTH_SCREEN - 20,
-    backgroundColor: COLOR.white,
+    backgroundColor: Colors.WHITE,
     borderRadius: 10,
   },
 });

@@ -1,9 +1,9 @@
 import {Modal, StyleSheet, View} from 'react-native';
 import React, {useState, useMemo} from 'react';
 import SearchBar from '../components/searchBar';
-import {COLOR} from '../themes/typography';
 import ListCard from '../components/listCard';
 import SortModal from '../components/sortModal';
+import {Colors} from '../styles';
 
 interface ISortList {
   label: string;
@@ -98,7 +98,7 @@ export default TransactionList;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLOR.gray,
+    backgroundColor: Colors.GRAY,
     padding: 10,
   },
   list: {},

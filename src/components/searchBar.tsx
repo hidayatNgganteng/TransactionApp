@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {memo} from 'react';
-import assets from '../assets';
-import {COLOR, FONTSIZE} from '../themes/typography';
+import {Img} from '../assets';
+import {Colors, FontSize} from '../styles';
 
 interface ISearchBar {
   value: string;
@@ -20,18 +20,18 @@ const SearchBar = ({value, onChangeText, onSort}: ISearchBar) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapLeft}>
-        <Image source={assets.images.search} style={styles.icon} />
+        <Image source={Img.SEARCH} style={styles.icon} />
         <TextInput
           value={value}
           onChangeText={onChangeText}
           style={styles.textField}
           placeholder="Cari nama, bank, atau nominal"
-          placeholderTextColor={COLOR.gray2}
+          placeholderTextColor={Colors.GRAY2}
         />
       </View>
       <TouchableOpacity onPress={onSort} style={styles.wrapRight}>
         <Text style={styles.label}>URUTKAN</Text>
-        <Image source={assets.images.bottomArrow} style={styles.arrowIcon} />
+        <Image source={Img.BOTTOM_ARROW} style={styles.arrowIcon} />
       </TouchableOpacity>
     </View>
   );
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: COLOR.white,
+    backgroundColor: Colors.WHITE,
     borderRadius: 5,
   },
   icon: {
@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
   textField: {
     flex: 1,
     height: 50,
-    color: COLOR.black,
-    fontSize: FONTSIZE.small,
+    color: Colors.BLACK,
+    fontSize: FontSize.SMALL,
   },
   wrapLeft: {
     flexDirection: 'row',
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   label: {
-    color: COLOR.orange,
-    fontSize: FONTSIZE.small,
+    color: Colors.ORANGE,
+    fontSize: FontSize.SMALL,
     fontWeight: 'bold',
   },
   arrowIcon: {

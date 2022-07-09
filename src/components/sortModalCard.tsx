@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {COLOR, FONTSIZE} from '../themes/typography';
+import {Colors, FontSize} from '../styles';
 
 interface ISortModalCard {
   onSelect: () => void;
@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
     height: BIG_DOT_SIZE,
     borderRadius: BIG_DOT_SIZE / 2,
     borderWidth: 2,
-    borderColor: COLOR.orange,
+    borderColor: Colors.ORANGE,
   },
   smallDots: {
     position: 'absolute',
     width: SMALL_DOT_SIZE,
     height: SMALL_DOT_SIZE,
     borderRadius: SMALL_DOT_SIZE / 2,
-    backgroundColor: COLOR.orange,
+    backgroundColor: Colors.ORANGE,
     left: '50%',
     top: '50%',
     transform: [
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   label: {
     marginLeft: 10,
-    fontSize: FONTSIZE.semiMedium,
-    color: COLOR.black,
+    fontSize: FontSize.SEMI_MEDIUM,
+    color: Colors.BLACK,
   },
 });

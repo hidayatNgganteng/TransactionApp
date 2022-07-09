@@ -1,8 +1,8 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {memo} from 'react';
-import assets from '../assets';
-import {COLOR, FONTSIZE} from '../themes/typography';
+import {Img} from '../assets';
 import {DATE_IDN_FORMAT, IDR_MASK} from '../utils/formater';
+import {Colors, FontSize} from '../styles';
 
 interface IListCard {
   senderBank: string;
@@ -31,7 +31,7 @@ const ListCard = ({
       <View style={styles.wrapLeft}>
         <View style={styles.bank}>
           <Text style={styles.bankLabel}>{senderBank}</Text>
-          <Image source={assets.images.rightArrow} style={styles.arrow} />
+          <Image source={Img.RIGHT_ARROW} style={styles.arrow} />
           <Text style={styles.bankLabel}>{beneficiaryBank}</Text>
         </View>
         <Text style={styles.name}>- {beneficiaryName}</Text>
@@ -57,11 +57,11 @@ const ARROW_SIZE = 17;
 const DOT_SIZE = 10;
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLOR.white,
+    backgroundColor: Colors.WHITE,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingVertical: 17,
-    borderLeftColor: COLOR.orange,
+    borderLeftColor: Colors.ORANGE,
     borderRadius: 10,
     borderLeftWidth: 10,
     paddingLeft: 17,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   containerSuccess: {
-    borderLeftColor: COLOR.green,
+    borderLeftColor: Colors.GREEN,
   },
   wrapLeft: {
     flex: 1,
@@ -80,9 +80,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bankLabel: {
-    fontSize: FONTSIZE.semiMedium,
+    fontSize: FontSize.SEMI_MEDIUM,
     fontWeight: 'bold',
-    color: COLOR.black,
+    color: Colors.BLACK,
   },
   arrow: {
     width: ARROW_SIZE,
@@ -90,43 +90,43 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   name: {
-    fontSize: FONTSIZE.semiMedium,
+    fontSize: FontSize.SEMI_MEDIUM,
     fontWeight: '500',
     marginVertical: 5,
-    color: COLOR.black,
+    color: Colors.BLACK,
   },
   info: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   infoLabel: {
-    fontSize: FONTSIZE.semiMedium,
+    fontSize: FontSize.SEMI_MEDIUM,
     marginHorizontal: 5,
-    color: COLOR.black,
+    color: Colors.BLACK,
   },
   dot: {
     width: DOT_SIZE,
     height: DOT_SIZE,
     borderRadius: DOT_SIZE / 2,
-    backgroundColor: COLOR.black,
+    backgroundColor: Colors.BLACK,
   },
   status: {
     borderWidth: 2,
-    borderColor: COLOR.orange,
+    borderColor: Colors.ORANGE,
     borderRadius: 7,
     paddingHorizontal: 13,
     paddingVertical: 6,
   },
   statusSuccess: {
-    borderColor: COLOR.green,
-    backgroundColor: COLOR.green,
+    borderColor: Colors.GREEN,
+    backgroundColor: Colors.GREEN,
   },
   statusLabel: {
-    fontSize: FONTSIZE.small,
-    color: COLOR.black,
+    fontSize: FontSize.SMALL,
+    color: Colors.BLACK,
     fontWeight: 'bold',
   },
   statusLabelSuccess: {
-    color: COLOR.white,
+    color: Colors.WHITE,
   },
 });
