@@ -3,7 +3,7 @@ import {BASE_URL} from '../../config';
 
 export const useGetFetch = (endpoint: string) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [apiData, setApiData] = useState<any[] | null>(null);
+  const [apiData, setApiData] = useState<any[]>([]);
   const [serverError, setServerError] = useState<any | null>(null);
 
   useEffect(() => {

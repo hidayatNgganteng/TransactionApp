@@ -23,7 +23,7 @@ const TransactionList = () => {
   // get transaction list
   const {
     isLoading,
-    apiData: transactionList,
+    apiData: transactionListData,
     serverError,
   } = useGetFetch('/frontend-test');
 
@@ -65,6 +65,14 @@ const TransactionList = () => {
   const onSearch = (text: string) => setSearchValue(text);
   const onCloseSortModal = () => setIsSortModal(false);
   const onOpenSortModal = () => setIsSortModal(true);
+  const transactionListFilter = transactionListData.filter(item => {
+    return (
+      item.sender_bank.toLowerCase().includes(searchValue.toLowerCase()) ||
+      item.beneficiary_bank.toLowerCase().includes(searchValue.toLowerCase()) ||
+      item.beneficiary_name.toLowerCase().includes(searchValue.toLowerCase()) ||
+      item.amount.toString().includes(searchValue.toLowerCase())
+    );
+  });
 
   return (
     <View style={styles.container}>
@@ -85,9 +93,10 @@ const TransactionList = () => {
           <Text style={styles.errorText}>{serverError.message}</Text>
         ) : (
           <FlatList
-            data={transactionList}
-            renderItem={({item}) => (
+            data={transactionListFilter}
+            renderItem={({item, index}) => (
               <ListCard
+                key={index.toString()}
                 senderBank={item.sender_bank}
                 beneficiaryBank={item.beneficiary_bank}
                 beneficiaryName={item.beneficiary_name}
@@ -98,6 +107,9 @@ const TransactionList = () => {
             )}
             keyExtractor={item => item.id}
             showsVerticalScrollIndicator={false}
+            ListEmptyComponent={() => (
+              <Text style={styles.errorText}>Data not found</Text>
+            )}
           />
         )}
       </View>
