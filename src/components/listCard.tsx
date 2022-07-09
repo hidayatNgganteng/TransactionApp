@@ -50,7 +50,7 @@ const ListCard = ({
 
 export default memo(ListCard);
 
-const ARROW_SIZE = 20;
+const ARROW_SIZE = 17;
 const DOT_SIZE = 10;
 const styles = StyleSheet.create({
   container: {
@@ -74,10 +74,12 @@ const styles = StyleSheet.create({
   },
   bank: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   bankLabel: {
-    fontSize: FONTSIZE.normal,
+    fontSize: FONTSIZE.semiMedium,
     fontWeight: 'bold',
+    color: COLOR.black,
   },
   arrow: {
     width: ARROW_SIZE,
@@ -85,15 +87,19 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   name: {
-    fontSize: FONTSIZE.normal,
+    fontSize: FONTSIZE.semiMedium,
+    fontWeight: '500',
+    marginVertical: 5,
+    color: COLOR.black,
   },
   info: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   infoLabel: {
-    fontSize: FONTSIZE.normal,
+    fontSize: FONTSIZE.semiMedium,
     marginHorizontal: 5,
+    color: COLOR.black,
   },
   dot: {
     width: DOT_SIZE,
@@ -105,8 +111,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: COLOR.orange,
     borderRadius: 7,
-    paddingHorizontal: 15,
-    paddingVertical: 8,
+    paddingHorizontal: 13,
+    paddingVertical: 6,
   },
   statusSuccess: {
     borderColor: COLOR.green,

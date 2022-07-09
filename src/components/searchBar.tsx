@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
   label: {
     color: COLOR.orange,
     fontSize: FONTSIZE.small,
+    fontWeight: 'bold',
   },
   arrowIcon: {
     marginLeft: 5,

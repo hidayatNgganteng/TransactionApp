@@ -8,7 +8,8 @@ export const COLOR = {
 };
 
 export const FONTSIZE = {
-  normal: 20,
-  medium: 17,
   small: 14,
+  semiMedium: 15.5,
+  medium: 17,
+  normal: 20,
 };
