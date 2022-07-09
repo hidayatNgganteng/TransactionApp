@@ -1,8 +1,8 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import SearchBar from '../components/search-bar';
+import SearchBar from '../components/searchBar';
 import {COLOR} from '../themes/typography';
-import ListCard from '../components/list-card';
+import ListCard from '../components/listCard';
 
 const TransactionList = () => {
   const [searchValue, setSearchValue] = React.useState('');
