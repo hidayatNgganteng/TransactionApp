@@ -39,10 +39,6 @@ $ react-native run-ios (or you can running immedietly via xcode)
 #### 3. Copy id transaction
 
 
-## apk file
-
-
 
 ## Screenshoot
-![screenshoot app](https://i.ibb.co/tPpyjF2/hidayat-ss.jpg)
-
+![screenshoot app](https://github.com/hidayatNgganteng/TransactionApp/blob/master/src/images/screenshoot-app.jpg)
