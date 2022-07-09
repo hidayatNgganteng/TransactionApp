@@ -47,4 +47,4 @@ https://drive.google.com/file/d/11fR6LGbkUMDNFb6a_DXj5Lp4-tSIrC6m/view?usp=shari
 
 
 ## Screenshoot
-![screenshoot app](https://i.ibb.co/tPpyjF2/hidayat-ss.jpg)
+![screenshoot app](https://i.ibb.co/fFWMr8C/screenshoot-app.jpg)
