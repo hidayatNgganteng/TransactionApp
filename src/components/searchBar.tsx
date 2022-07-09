@@ -13,9 +13,11 @@ import {COLOR, FONTSIZE} from '../themes/typography';
 const SearchBar = ({
   value,
   onChangeText,
+  onSort,
 }: {
   value: string;
   onChangeText: (text: string) => void;
+  onSort: () => void;
 }) => {
   return (
     <View style={styles.container}>
@@ -29,7 +31,7 @@ const SearchBar = ({
           placeholderTextColor={COLOR.gray2}
         />
       </View>
-      <TouchableOpacity onPress={() => {}} style={styles.wrapRight}>
+      <TouchableOpacity onPress={onSort} style={styles.wrapRight}>
         <Text style={styles.label}>URUTKAN</Text>
         <Image source={assets.images.bottomArrow} style={styles.arrowIcon} />
       </TouchableOpacity>
