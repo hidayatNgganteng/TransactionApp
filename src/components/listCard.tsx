@@ -26,7 +26,8 @@ const ListCard = ({
   return (
     <TouchableOpacity
       onPress={() => {}}
-      style={[styles.container, isSuccess && styles.containerSuccess]}>
+      style={[styles.container, isSuccess && styles.containerSuccess]}
+      activeOpacity={0.75}>
       <View style={styles.wrapLeft}>
         <View style={styles.bank}>
           <Text style={styles.bankLabel}>{senderBank}</Text>
