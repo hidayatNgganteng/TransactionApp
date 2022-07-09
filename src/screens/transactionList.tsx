@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   list: {
-    marginBottom: 80,
+    flex: 1,
   },
   loading: {
     marginTop: 30,
