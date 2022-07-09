@@ -18,8 +18,8 @@ interface ITransactionDetails {
 
 const TransactionDetails = ({route}: ITransactionDetails) => {
   const {item} = route.params;
-  const [isToastVisible, setToastVisible] = useState(false);
-  const [isDetail, setIsDetail] = useState(true);
+  const [isToastVisible, setToastVisible] = useState<boolean>(false);
+  const [isDetail, setIsDetail] = useState<boolean>(true);
 
   const onPressCopy = useCallback(() => {
     Clipboard.setString(item.id);
