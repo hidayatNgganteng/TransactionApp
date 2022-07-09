@@ -32,6 +32,9 @@ $ react-native run-android
 # ios
 $ react-native run-ios (or you can running immedietly via xcode)
 
+# android
+$ react-native run-android
+```
 ## Features
 #### 1. Transaction list
 #### 1. Search list
@@ -39,6 +42,9 @@ $ react-native run-ios (or you can running immedietly via xcode)
 #### 3. Copy id transaction
 
 
+## apk file
+https://drive.google.com/file/d/11fR6LGbkUMDNFb6a_DXj5Lp4-tSIrC6m/view?usp=sharing
+
 
 ## Screenshoot
-![screenshoot app](https://github.com/hidayatNgganteng/TransactionApp/blob/master/src/images/screenshoot-app.jpg)
+![screenshoot app](https://i.ibb.co/tPpyjF2/hidayat-ss.jpg)
