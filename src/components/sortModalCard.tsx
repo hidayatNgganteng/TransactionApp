@@ -2,15 +2,13 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {COLOR, FONTSIZE} from '../themes/typography';
 
-const SortModalCard = ({
-  onSelect,
-  selected,
-  label,
-}: {
+interface ISortModalCard {
   onSelect: () => void;
   selected: boolean;
   label: string;
-}) => {
+}
+
+const SortModalCard = ({onSelect, selected, label}: ISortModalCard) => {
   return (
     <TouchableOpacity onPress={onSelect} style={styles.container}>
       <View style={styles.bigDots}>

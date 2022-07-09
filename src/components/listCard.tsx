@@ -4,6 +4,15 @@ import assets from '../assets';
 import {COLOR, FONTSIZE} from '../themes/typography';
 import {DATE_IDN_FORMAT, IDR_MASK} from '../utils/formater';
 
+interface IListCard {
+  senderBank: string;
+  beneficiaryBank: string;
+  beneficiaryName: string;
+  amount: number;
+  createdAt: string;
+  status: string;
+}
+
 const ListCard = ({
   senderBank,
   beneficiaryBank,
@@ -11,14 +20,7 @@ const ListCard = ({
   amount,
   createdAt,
   status,
-}: {
-  senderBank: string;
-  beneficiaryBank: string;
-  beneficiaryName: string;
-  amount: number;
-  createdAt: string;
-  status: string;
-}) => {
+}: IListCard) => {
   const isSuccess = status === 'success';
 
   return (

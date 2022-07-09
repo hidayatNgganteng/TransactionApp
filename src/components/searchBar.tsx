@@ -10,15 +10,13 @@ import React, {memo} from 'react';
 import assets from '../assets';
 import {COLOR, FONTSIZE} from '../themes/typography';
 
-const SearchBar = ({
-  value,
-  onChangeText,
-  onSort,
-}: {
+interface ISearchBar {
   value: string;
   onChangeText: (text: string) => void;
   onSort: () => void;
-}) => {
+}
+
+const SearchBar = ({value, onChangeText, onSort}: ISearchBar) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapLeft}>

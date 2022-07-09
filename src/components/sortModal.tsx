@@ -9,15 +9,13 @@ import React, {memo} from 'react';
 import {COLOR} from '../themes/typography';
 import SortModalCard from './sortModalCard';
 
-const SortModal = ({
-  data,
-  onSelect,
-  onClose,
-}: {
+interface ISortModal {
   data: any[];
   onSelect: (item: any) => void;
   onClose: () => void;
-}) => {
+}
+
+const SortModal = ({data, onSelect, onClose}: ISortModal) => {
   return (
     <TouchableOpacity onPress={onClose} style={styles.container}>
       <View style={styles.contentArea}>
