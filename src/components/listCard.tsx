@@ -11,6 +11,7 @@ interface IListCard {
   amount: number;
   createdAt: string;
   status: string;
+  onPress: () => void;
 }
 
 const ListCard = ({
@@ -20,12 +21,13 @@ const ListCard = ({
   amount,
   createdAt,
   status,
+  onPress,
 }: IListCard) => {
   const isSuccess = status.toLowerCase() === 'success';
 
   return (
     <TouchableOpacity
-      onPress={() => {}}
+      onPress={onPress}
       style={[styles.container, isSuccess && styles.containerSuccess]}
       activeOpacity={0.75}>
       <View style={styles.wrapLeft}>

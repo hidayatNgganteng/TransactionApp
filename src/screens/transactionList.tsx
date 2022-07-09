@@ -13,6 +13,9 @@ import SortModal from '../components/sortModal';
 import {Colors, FontSize} from '../styles';
 import {useGetFetch} from '../data/hooks/useFetch';
 
+interface ITransactionList {
+  navigation: any;
+}
 interface ISortList {
   label: string;
   selected: boolean;
@@ -20,7 +23,7 @@ interface ISortList {
   order: string;
 }
 
-const TransactionList = () => {
+const TransactionList = ({navigation}: ITransactionList) => {
   // get transaction list
   const {
     isLoading,
@@ -67,6 +70,7 @@ const TransactionList = () => {
     [],
   );
   const [sortList, setSortList] = useState<ISortList[]>(initialsortList);
+  const sortListSelected: any = sortList.find(item => item.selected);
 
   const onSortChange = useCallback(
     (index: number) => {
@@ -96,15 +100,12 @@ const TransactionList = () => {
       return 0;
     }
 
-    const sortListSelected: any = sortList.find(item => item.selected);
     const {sortField, order} = sortListSelected;
     if (order === 'asc') {
       return a[sortField] > b[sortField] ? 1 : -1;
     }
     return a[sortField] < b[sortField] ? 1 : -1;
   });
-
-  const sortListSelected: any = sortList.find(item => item.selected);
 
   return (
     <View style={styles.container}>
@@ -136,6 +137,9 @@ const TransactionList = () => {
                 amount={item.amount}
                 createdAt={item.created_at}
                 status={item.status}
+                onPress={() =>
+                  navigation.navigate('TransactionDetails', {item})
+                }
               />
             )}
             keyExtractor={item => item.id}
