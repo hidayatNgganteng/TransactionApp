@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import React, {useState, useMemo} from 'react';
+import React, {useState, useMemo, useCallback} from 'react';
 import SearchBar from '../components/searchBar';
 import ListCard from '../components/listCard';
 import SortModal from '../components/sortModal';
@@ -68,16 +68,19 @@ const TransactionList = () => {
   );
   const [sortList, setSortList] = useState<ISortList[]>(initialsortList);
 
-  const onSearch = (text: string) => setSearchValue(text);
-  const onSort = (index: number) => {
-    const newSortList = [...sortList];
-    newSortList.map((item, i) => {
-      item.selected = i === index;
-    });
-    setSortList(newSortList);
-    setIsSortModal(false);
-  };
+  const onSortChange = useCallback(
+    (index: number) => {
+      const newSortList = [...sortList];
+      newSortList.map((item, i) => {
+        item.selected = i === index;
+      });
+      setSortList(newSortList);
+      setIsSortModal(false);
+    },
+    [sortList],
+  );
 
+  // filter
   const transactionListFilter = transactionListData.filter(item => {
     return (
       item.sender_bank.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -86,6 +89,8 @@ const TransactionList = () => {
       item.amount.toString().includes(searchValue.toLowerCase())
     );
   });
+
+  // sorting
   const transactionListFilterSort = transactionListFilter.sort((a, b) => {
     if (sortList[0].selected) {
       return 0;
@@ -103,7 +108,7 @@ const TransactionList = () => {
     <View style={styles.container}>
       <SearchBar
         value={searchValue}
-        onChangeText={onSearch}
+        onChangeText={text => setSearchValue(text)}
         onSort={() => setIsSortModal(true)}
       />
 
@@ -146,7 +151,7 @@ const TransactionList = () => {
         onRequestClose={() => setIsSortModal(false)}>
         <SortModal
           data={sortList}
-          onSelect={onSort}
+          onSelect={onSortChange}
           onClose={() => setIsSortModal(false)}
         />
       </Modal>

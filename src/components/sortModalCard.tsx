@@ -1,5 +1,5 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import {Colors, FontSize} from '../styles';
 
 interface ISortModalCard {
@@ -19,7 +19,7 @@ const SortModalCard = ({onSelect, selected, label}: ISortModalCard) => {
   );
 };
 
-export default SortModalCard;
+export default memo(SortModalCard);
 
 const BIG_DOT_SIZE = 30;
 const SMALL_DOT_SIZE = 20;
