@@ -104,12 +104,15 @@ const TransactionList = () => {
     return a[sortField] < b[sortField] ? 1 : -1;
   });
 
+  const sortListSelected: any = sortList.find(item => item.selected);
+
   return (
     <View style={styles.container}>
       <SearchBar
         value={searchValue}
         onChangeText={text => setSearchValue(text)}
         onSort={() => setIsSortModal(true)}
+        label={sortListSelected.label}
       />
 
       <View style={styles.list}>

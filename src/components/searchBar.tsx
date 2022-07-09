@@ -14,9 +14,10 @@ interface ISearchBar {
   value: string;
   onChangeText: (text: string) => void;
   onSort: () => void;
+  label: string;
 }
 
-const SearchBar = ({value, onChangeText, onSort}: ISearchBar) => {
+const SearchBar = ({value, onChangeText, onSort, label}: ISearchBar) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapLeft}>
@@ -30,7 +31,7 @@ const SearchBar = ({value, onChangeText, onSort}: ISearchBar) => {
         />
       </View>
       <TouchableOpacity onPress={onSort} style={styles.wrapRight}>
-        <Text style={styles.label}>URUTKAN</Text>
+        <Text style={styles.label}>{label}</Text>
         <Image source={Img.BOTTOM_ARROW} style={styles.arrowIcon} />
       </TouchableOpacity>
     </View>
