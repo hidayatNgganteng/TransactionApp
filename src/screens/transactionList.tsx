@@ -2,6 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import SearchBar from '../components/search-bar';
 import {COLOR} from '../themes/typography';
+import ListCard from '../components/list-card';
 
 const TransactionList = () => {
   const [searchValue, setSearchValue] = React.useState('');
@@ -11,6 +12,25 @@ const TransactionList = () => {
   return (
     <View style={styles.container}>
       <SearchBar value={searchValue} onChangeText={onSearch} />
+
+      <View style={styles.list}>
+        <ListCard
+          senderBank="Bank Mandiri"
+          beneficiaryBank="BNI"
+          beneficiaryName="Rizky"
+          amount={100000}
+          createdAt="2022-07-09 00:03:38"
+          status="success"
+        />
+        <ListCard
+          senderBank="Bank Mandiri"
+          beneficiaryBank="BNI"
+          beneficiaryName="Rizky"
+          amount={100000}
+          createdAt="2022-07-09 00:03:38"
+          status="pending"
+        />
+      </View>
     </View>
   );
 };
@@ -23,4 +43,5 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR.gray,
     padding: 10,
   },
+  list: {},
 });

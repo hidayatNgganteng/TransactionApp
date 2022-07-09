@@ -4,6 +4,7 @@ export const COLOR = {
   white: '#ffffff',
   orange: '#ff725b',
   black: '#040404',
+  green: '#54b684',
 };
 
 export const FONTSIZE = {
