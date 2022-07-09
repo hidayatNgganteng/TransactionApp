@@ -21,7 +21,7 @@ const ListCard = ({
   createdAt,
   status,
 }: IListCard) => {
-  const isSuccess = status === 'success';
+  const isSuccess = status.toLowerCase() === 'success';
 
   return (
     <TouchableOpacity

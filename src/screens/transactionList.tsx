@@ -1,9 +1,17 @@
-import {Modal, StyleSheet, View} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  Modal,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React, {useState, useMemo} from 'react';
 import SearchBar from '../components/searchBar';
 import ListCard from '../components/listCard';
 import SortModal from '../components/sortModal';
-import {Colors} from '../styles';
+import {Colors, FontSize} from '../styles';
+import {useGetFetch} from '../data/hooks/useFetch';
 
 interface ISortList {
   label: string;
@@ -12,6 +20,13 @@ interface ISortList {
 }
 
 const TransactionList = () => {
+  // get transaction list
+  const {
+    isLoading,
+    apiData: transactionList,
+    serverError,
+  } = useGetFetch('/frontend-test');
+
   const [searchValue, setSearchValue] = useState<string>('');
   const [isSortModal, setIsSortModal] = useState<boolean>(false);
 
@@ -60,22 +75,31 @@ const TransactionList = () => {
       />
 
       <View style={styles.list}>
-        <ListCard
-          senderBank="Bank Mandiri"
-          beneficiaryBank="BNI"
-          beneficiaryName="Rizky"
-          amount={100000}
-          createdAt="2022-07-09 00:03:38"
-          status="success"
-        />
-        <ListCard
-          senderBank="Bank Mandiri"
-          beneficiaryBank="BNI"
-          beneficiaryName="Rizky"
-          amount={100000}
-          createdAt="2022-07-09 00:03:38"
-          status="pending"
-        />
+        {isLoading ? (
+          <ActivityIndicator
+            size="large"
+            style={styles.loading}
+            color={Colors.ORANGE}
+          />
+        ) : serverError !== null ? (
+          <Text style={styles.errorText}>{serverError.message}</Text>
+        ) : (
+          <FlatList
+            data={transactionList}
+            renderItem={({item}) => (
+              <ListCard
+                senderBank={item.sender_bank}
+                beneficiaryBank={item.beneficiary_bank}
+                beneficiaryName={item.beneficiary_name}
+                amount={item.amount}
+                createdAt={item.created_at}
+                status={item.status}
+              />
+            )}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+          />
+        )}
       </View>
 
       <Modal
@@ -101,5 +125,16 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.GRAY,
     padding: 10,
   },
-  list: {},
+  list: {
+    marginBottom: 80,
+  },
+  loading: {
+    marginTop: 30,
+  },
+  errorText: {
+    marginTop: 20,
+    textAlign: 'center',
+    fontSize: FontSize.SMALL,
+    color: Colors.BLACK,
+  },
 });
