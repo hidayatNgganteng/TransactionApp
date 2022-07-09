@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 25,
-    paddingVertical: 25,
+    paddingVertical: 18,
   },
   bigDots: {
     width: BIG_DOT_SIZE,

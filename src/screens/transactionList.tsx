@@ -15,8 +15,9 @@ import {useGetFetch} from '../data/hooks/useFetch';
 
 interface ISortList {
   label: string;
-  order: string;
   selected: boolean;
+  sortField: string;
+  order: string;
 }
 
 const TransactionList = () => {
@@ -34,28 +35,33 @@ const TransactionList = () => {
     () => [
       {
         label: 'URUTKAN',
-        order: '',
         selected: true,
+        sortField: '',
+        order: '',
       },
       {
         label: 'Nama A-Z',
-        order: 'name asc',
         selected: false,
+        sortField: 'beneficiary_name',
+        order: 'asc',
       },
       {
         label: 'Nama Z-A',
-        order: 'name desc',
         selected: false,
+        sortField: 'beneficiary_name',
+        order: 'desc',
       },
       {
         label: 'Tanggal Terbaru',
-        order: 'date desc',
         selected: false,
+        sortField: 'created_at',
+        order: 'desc',
       },
       {
         label: 'Tanggal Terlama',
-        order: 'date asc',
         selected: false,
+        sortField: 'created_at',
+        order: 'asc',
       },
     ],
     [],
@@ -63,8 +69,15 @@ const TransactionList = () => {
   const [sortList, setSortList] = useState<ISortList[]>(initialsortList);
 
   const onSearch = (text: string) => setSearchValue(text);
-  const onCloseSortModal = () => setIsSortModal(false);
-  const onOpenSortModal = () => setIsSortModal(true);
+  const onSort = (index: number) => {
+    const newSortList = [...sortList];
+    newSortList.map((item, i) => {
+      item.selected = i === index;
+    });
+    setSortList(newSortList);
+    setIsSortModal(false);
+  };
+
   const transactionListFilter = transactionListData.filter(item => {
     return (
       item.sender_bank.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -73,13 +86,25 @@ const TransactionList = () => {
       item.amount.toString().includes(searchValue.toLowerCase())
     );
   });
+  const transactionListFilterSort = transactionListFilter.sort((a, b) => {
+    if (sortList[0].selected) {
+      return 0;
+    }
+
+    const sortListSelected: any = sortList.find(item => item.selected);
+    const {sortField, order} = sortListSelected;
+    if (order === 'asc') {
+      return a[sortField] > b[sortField] ? 1 : -1;
+    }
+    return a[sortField] < b[sortField] ? 1 : -1;
+  });
 
   return (
     <View style={styles.container}>
       <SearchBar
         value={searchValue}
         onChangeText={onSearch}
-        onSort={onOpenSortModal}
+        onSort={() => setIsSortModal(true)}
       />
 
       <View style={styles.list}>
@@ -93,7 +118,7 @@ const TransactionList = () => {
           <Text style={styles.errorText}>{serverError.message}</Text>
         ) : (
           <FlatList
-            data={transactionListFilter}
+            data={transactionListFilterSort}
             renderItem={({item, index}) => (
               <ListCard
                 key={index.toString()}
@@ -118,11 +143,11 @@ const TransactionList = () => {
         transparent={true}
         animationType={'fade'}
         visible={isSortModal}
-        onRequestClose={onCloseSortModal}>
+        onRequestClose={() => setIsSortModal(false)}>
         <SortModal
           data={sortList}
-          onSelect={() => {}}
-          onClose={onCloseSortModal}
+          onSelect={onSort}
+          onClose={() => setIsSortModal(false)}
         />
       </Modal>
     </View>

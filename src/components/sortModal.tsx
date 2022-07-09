@@ -11,7 +11,7 @@ import {Colors} from '../styles';
 
 interface ISortModal {
   data: any[];
-  onSelect: (item: any) => void;
+  onSelect: (index: any) => void;
   onClose: () => void;
 }
 
@@ -28,7 +28,7 @@ const SortModal = ({data, onSelect, onClose}: ISortModal) => {
               key={index.toString()}
               label={item.label}
               selected={item.selected}
-              onSelect={() => onSelect(item.order)}
+              onSelect={() => onSelect(index)}
             />
           )}
         />
@@ -49,8 +49,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.75)',
   },
   contentArea: {
-    width: WIDTH_SCREEN - 20,
+    width: WIDTH_SCREEN - 60,
     backgroundColor: Colors.WHITE,
     borderRadius: 10,
+    paddingVertical: 10,
   },
 });
