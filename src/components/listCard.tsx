@@ -1,7 +1,7 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {memo} from 'react';
 import {Img} from '../assets';
-import {DATE_IDN_FORMAT, IDR_MASK} from '../utils/formater';
+import {BANK_NAME_MASK, DATE_IDN_FORMAT, IDR_MASK} from '../utils/formater';
 import {Colors, FontSize} from '../styles';
 
 interface IListCard {
@@ -32,9 +32,11 @@ const ListCard = ({
       activeOpacity={0.75}>
       <View style={styles.wrapLeft}>
         <View style={styles.bank}>
-          <Text style={styles.bankLabel}>{senderBank}</Text>
+          <Text style={styles.bankLabel}>{BANK_NAME_MASK(senderBank)}</Text>
           <Image source={Img.RIGHT_ARROW} style={styles.arrow} />
-          <Text style={styles.bankLabel}>{beneficiaryBank}</Text>
+          <Text style={styles.bankLabel}>
+            {BANK_NAME_MASK(beneficiaryBank)}
+          </Text>
         </View>
         <Text style={styles.name}>- {beneficiaryName}</Text>
         <View style={styles.info}>
@@ -96,6 +98,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginVertical: 5,
     color: Colors.BLACK,
+    textTransform: 'uppercase',
   },
   info: {
     flexDirection: 'row',

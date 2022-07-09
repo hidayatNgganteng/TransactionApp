@@ -105,5 +105,6 @@ const styles = StyleSheet.create({
     fontSize: FontSize.SEMI_MEDIUM,
     color: Colors.BLACK,
     fontWeight: '700',
+    textTransform: 'uppercase',
   },
 });
